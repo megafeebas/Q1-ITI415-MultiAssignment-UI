@@ -6,27 +6,22 @@ using UnityEngine.UI;
 public class sCollection : MonoBehaviour
 {
     // Start is called before the first frame update
-    private int objects;
-    public GameObject GUI;
+    private int objects = 4;
     void Awake()
     {
-        objects = 4;
-        GUI.GetComponent<Text>().text = "There are " + objects + " ores left";
     }
 
     // Update is called once per frame
+    void Update()
+    {
+    }
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Ore")
+        if (other.gameObject.tag == "Player")
         {
             objects--;
-            GUI.GetComponent<Text>().text = "There are " + objects + " ores left";
-            if (objects == 0)
-            {
-                GUI.GetComponent<Text>().text = "You Win!";
-            }
+            gameObject.GetComponent<Renderer>().enabled = false;
         }
-        other.gameObject.SetActive(false);
 
     }
 
