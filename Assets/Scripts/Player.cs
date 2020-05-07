@@ -18,10 +18,8 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        print("not quite");
         if (other.gameObject.tag == "Player")
         {
-            print("we here");
             player.transform.position = respawnPoint.transform.position;
         }
     }

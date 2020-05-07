@@ -9,7 +9,7 @@ public class sCollection : MonoBehaviour
     private int objects = 4;
     public Text countText;
 
-    void Awake()
+    void Start()
     {
         countText.text = "Count: " + objects.ToString();
     }
@@ -17,7 +17,10 @@ public class sCollection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(this.transform.position.y <= 0)
+        {
+            countText.text = "You Lose!";
+        }
     }
     void OnTriggerEnter(Collider other)
     {
@@ -27,6 +30,10 @@ public class sCollection : MonoBehaviour
             countText.text = "Count: " + objects.ToString();
         }
         Destroy(other.gameObject);
+        if(objects == 0)
+        {
+            countText.text = "You Win!";
+        }
     }
 
 }
